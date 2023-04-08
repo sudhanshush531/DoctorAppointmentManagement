@@ -1,6 +1,9 @@
 package com.project.doctorappointmentsystem.exception;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -11,7 +14,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 
 @ControllerAdvice
@@ -32,21 +34,22 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler({ Exception.class })
-	public ResponseEntity<ErrorInfo> genericException(Exception ex, HttpServletRequest request) {
-//		log.error("Exception {} for {}", ex.getLocalizedMessage(), request.getRequestURI());
-		return new ResponseEntity<>(
-				ErrorInfo.builder().message(ex.getLocalizedMessage())
-						.message(HttpStatus.INTERNAL_SERVER_ERROR.toString()).details(request.getRequestURI()).build(),
-				HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-
-	@ExceptionHandler({ MethodArgumentNotValidException.class })
-	public ResponseEntity<ErrorInfo> genericException(MethodArgumentNotValidException ex, WebRequest request) {
-//		log.error("Exception {} for {}", ex.getLocalizedMessage(), request.getContextPath());
-		return new ResponseEntity<>(
-				ErrorInfo.builder().timestamp(new Date()).details(ex.getBindingResult().toString())
-						.message("Method Argument Invalid").status(HttpStatus.BAD_REQUEST.value()).build(),
-				HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+//	@ExceptionHandler({ Exception.class })
+//	public ResponseEntity<ErrorInfo> genericException(Exception ex, HttpServletRequest request) {
+////		log.error("Exception {} for {}", ex.getLocalizedMessage(), request.getRequestURI());
+//		return new ResponseEntity<>(
+//				ErrorInfo.builder().message(ex.getLocalizedMessage())
+//						.message(HttpStatus.INTERNAL_SERVER_ERROR.toString()).details(request.getRequestURI()).build(),
+//				HttpStatus.INTERNAL_SERVER_ERROR);
+////		return new ResponseEntity<>(new ErrorInfo(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.toString(),request.getRequestURI(),HttpStatus.INTERNAL_SERVER_ERROR.value()));
+//	}
+//
+//	@ExceptionHandler({ MethodArgumentNotValidException.class })
+//	public ResponseEntity<ErrorInfo> genericException(MethodArgumentNotValidException ex, WebRequest request) {
+////		log.error("Exception {} for {}", ex.getLocalizedMessage(), request.getContextPath());
+//		return new ResponseEntity<>(
+//				ErrorInfo.builder().timestamp(new Date()).details(ex.getBindingResult().toString())
+//						.message("Method Argument Invalid").status(HttpStatus.BAD_REQUEST.value()).build(),
+//				HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
 }

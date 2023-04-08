@@ -1,12 +1,12 @@
 package com.project.doctorappointmentsystem.entity;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Admin {
@@ -15,11 +15,11 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long admin_id;
 	
-	@Column(name = "username")
-	private String username; 
+	@Column(name = "first_name")
+	private String firstName; 
 	
-	@Column(name = "password")
-	private String password;
+	@Column(name = "last_name")
+	private String lastName;
 	
 	@Column(name = "email", unique = true)
 	@Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "email is invalid")

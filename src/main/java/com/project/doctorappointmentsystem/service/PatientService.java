@@ -18,7 +18,7 @@ public class PatientService {
 	
 	public List<Patient> getAllPatientData() {
 		Optional<List<Patient>> patientDetails = Optional.ofNullable(patientRepository.findAll());
-		if (patientDetails.isEmpty()) {
+		if (!patientDetails.isPresent()) {
 			throw new NotFoundException("No data found ");
 		}
 		return patientDetails.get();

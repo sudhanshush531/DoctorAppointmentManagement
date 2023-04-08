@@ -18,7 +18,7 @@ public class AdminService {
 	
 	public List<Admin> getAllAdminData() {
 		Optional<List<Admin>> bankDetails = Optional.ofNullable(adminRepository.findAll());
-		if (bankDetails.isEmpty()) {
+		if (!bankDetails.isPresent()) {
 			throw new NotFoundException("No data found ");
 		}
 		return bankDetails.get();

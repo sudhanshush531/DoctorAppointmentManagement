@@ -3,13 +3,12 @@ package com.project.doctorappointmentsystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.doctorappointmentsystem.entity.Admin;
-import com.project.doctorappointmentsystem.entity.Doctor;
 import com.project.doctorappointmentsystem.entity.Patient;
-import com.project.doctorappointmentsystem.service.DoctorService;
 import com.project.doctorappointmentsystem.service.PatientService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping(path = "/patients")
 public class PatientController {
@@ -37,4 +37,6 @@ public class PatientController {
 	public List<Patient> getAllPatientDetails() {
 		return patientService.getAllPatientData();
 	}
+	
+	
 }
