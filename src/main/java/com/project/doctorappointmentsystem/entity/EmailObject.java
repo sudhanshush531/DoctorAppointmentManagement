@@ -5,14 +5,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class EmailObject {
+	
     @Email
     @NotNull
     @Size(min = 1, message = "Please, set an email address to send the message to it")
     private String to;
+    
     private String recipientName;
+    
     private String subject;
+    
     private String text;
+    
     private String senderName;
+    
     private String templateEngine;
 
     public String getTo() {

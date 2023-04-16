@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.project.doctorappointmentsystem.entity.Admin;
+
 import com.project.doctorappointmentsystem.entity.Doctor;
 import com.project.doctorappointmentsystem.service.DoctorService;
 
@@ -29,7 +29,7 @@ public class DoctorController {
 	@Operation(summary = "Fetch All the Doctors Data", description = "This API will Fetch All the Doctors Data", parameters = {})
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Doctor Details data Found Successfully", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = Admin.class)) }),
+					@Content(mediaType = "application/json", schema = @Schema(implementation = Doctor.class)) }),
 			@ApiResponse(responseCode = "400", description = "Invalid data supplied", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content),
 			@ApiResponse(responseCode = "404", description = "Data not found", content = @Content) })
